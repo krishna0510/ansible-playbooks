@@ -1,0 +1,8 @@
+- hosts: 
+    - web
+  roles:
+    - geerlingguy.git
+#  roles:
+#    - { role: geerlingguy.git }
+#  vars:
+#    git_install_from_source: yes

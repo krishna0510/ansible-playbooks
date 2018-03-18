@@ -1,0 +1,28 @@
+- hosts: web
+  become: true
+  vars:
+    who: Sreeprakash
+    title: Sree
+    desc: Test Description via ansible playbook
+  remote_user: root
+  tasks:
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
+
+    - name: enabled mod_rewrite
+      apache2_module: name=rewrite state=present
+      notify:
+        - restart apache2
+
+    - name: install PHP module for Apache
+      apt: name=libapache2-mod-php5 state=present
+      notify:
+        - restart apache2
+
+    - name: copy simpleweb template to /var/www/html/ folder
+      template: src=/etc/ansible/tmp/simpleweb.html dest=/var/www/html/index.html
+
+  handlers:
+    - name: restart apache2
+      service: name=apache2 state=restarted
+
