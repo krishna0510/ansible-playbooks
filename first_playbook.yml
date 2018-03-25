@@ -3,6 +3,5 @@
   tasks:
       - name: Create a file
         file:
-            path: /root/sree.txt
+            path: /root/test.txt
             state: touch
-

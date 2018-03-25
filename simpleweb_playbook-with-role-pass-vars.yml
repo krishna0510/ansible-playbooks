@@ -1,0 +1,5 @@
+- hosts: web
+  become: true
+  remote_user: root
+  roles:
+    - {role: simpleweb, title: 'New Title', newvar: 'Yes, I am a new variable'}

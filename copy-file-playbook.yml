@@ -1,0 +1,6 @@
+- hosts: web
+  tasks:
+    - name: Copy file
+      copy:
+        src: /etc/ansible/copyme.txt
+        dest: /root/copyme.txt

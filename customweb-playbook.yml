@@ -1,8 +1,13 @@
+# mkdir -p ansible/tmp
+# git clone https://github.com/schogini/ansible-customeweb-playbook.git ansible/tmp/customweb
+# mv ansible/tmp/customweb-playbook.yml ansible/
+# docker run --rm -v $PWD/ansible:/etc/ansible schogini/docker-ansible-ws-ubuntu ansible-playbook /etc/ansible/customweb_playbook.yml
+---
 - hosts: web
   become: true
   vars:
     who: Gayatri
-    title: Website Title
+    title: Custom Web Title
     desc: Test Description via ansible playbook
   remote_user: root
   tasks:
@@ -19,10 +24,17 @@
       notify:
         - restart apache2
 
+    - name: copy directory
+      copy:
+        src: /etc/ansible/tmp/customweb/customweb/
+        dest: /var/www/html
+        owner: root
+        group: root
+        mode: 0744
+
     - name: copy simpleweb template to /var/www/html/ folder
-      template: src=/etc/ansible/tmp/simpleweb.html dest=/var/www/html/index.html
+      template: src=/etc/ansible/tmp/customweb/customweb.html dest=/var/www/html/index.html
 
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted
-

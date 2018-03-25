@@ -1,0 +1,4 @@
+---
+- name: copy simpleweb template to /var/www/html/ folder
+  template: src=simpleweb.html dest=/var/www/html/index.html
+  tags: fileonly

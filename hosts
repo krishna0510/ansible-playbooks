@@ -1,6 +1,6 @@
 [web]
-node1
-node2
+ansnode1
+ansnode2
 
 [db]
-node3
+ansnode3

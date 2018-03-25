@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+</head>
+<body>
+	<h1>{{title}} from Host {{ansible_host}}</h1>
+	<h3>The {{desc}}</h3>
+	<hr>
+	<h3>I was created by {{who}}</h3>
+	<p>Do we have a new variable? {{newvar | default('No, we do not have a new variable') }}</p>
+</body>
+</html>
