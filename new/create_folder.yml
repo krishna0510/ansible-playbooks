@@ -1,0 +1,5 @@
+---
+
+- name: creating folder
+
+  file: path=/home/ubuntu/folder1 state=directory

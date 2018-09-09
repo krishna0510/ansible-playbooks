@@ -1,0 +1,13 @@
+---
+
+- name: install ntpd server
+
+  hosts: [db] 
+  become: yes
+
+  tasks:
+  - name: install ntp server
+    apt: name=ntp state=present
+ 
+  - name: service must be running        
+    service: name=ntp state=started
