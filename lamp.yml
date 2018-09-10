@@ -1,0 +1,22 @@
+---
+- name: install apache2 & php & mysqlserver
+  hosts: [db]
+  become: true
+  become_user: root
+  gather_facts: true
+
+  tasks:
+  - name : install apache2 packages
+    package: name=apache2 state=present
+  - name : install apache2-php packages
+    package: name=libapache2-mod-php5 state=present
+  - name : install php-cli packages
+    package: name=php-cli state=present
+  - name : install php-mcrypt packages
+    package: name=php-mcrypt state=present
+  - name : install php-gd packages
+    package: name=php-gd state=present
+  - name : install php-mysql packages
+    package: name=php-mysql state=present
+  - name : install mysql-server packages
+    package: name=mysql-server state=present
